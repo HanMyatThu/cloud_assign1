@@ -24,9 +24,10 @@ class WatermarkSize(Enum):
 # the function.
 target_url = "http://127.0.0.1:8080/watermark"
 
+input_data = Path("input.jpg").read_bytes()
 
-def perform_watermark_request(image_file : Path, watermark_size : WatermarkSize, output_file : Optional[Path] = None) -> bool:
-    filedict = {"image": image_file.open("rb")}
+def perform_watermark_request(watermark_size : WatermarkSize, output_file : Optional[Path] = None) -> bool:
+    filedict = {"image": ("input.jpg", input_data, "image/jpeg")}
 
     r = requests.post(target_url, data={'watermark-size': watermark_size.value}, files=filedict)
 
@@ -43,9 +44,10 @@ def perform_watermark_request(image_file : Path, watermark_size : WatermarkSize,
         with output_file.open("wb") as fh:
             fh.write(r.content)
 
+    print("request done")
     return True
 
 
 # Example function call
 # TODO: provide an input file yourself
-perform_watermark_request(Path("input.jpg"), WatermarkSize.Medium, Path("output.jpg"))
+perform_watermark_request(WatermarkSize.Medium, Path("output.jpg"))

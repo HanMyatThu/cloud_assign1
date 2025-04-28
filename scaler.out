@@ -1,0 +1,2 @@
+Error: error creating container storage: the container name "assign1-8081" is already in use by "24ad5f80a21039259ed7cead00d825368923c7aee07992f3693d28aff4698b84". You have to remove that container to be able to reuse that name.: that name is already in use
+Error: error creating container storage: the container name "assign1-8082" is already in use by "c8ff9907d541252ff93d0ab9b983ef19f6cf396894a9d91c0e92513c6db9af0b". You have to remove that container to be able to reuse that name.: that name is already in use
